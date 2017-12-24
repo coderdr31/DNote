@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 ##################################################################
-## get_dummies 变量0/1化
+## get_dummies 变量one-hot, 只能处理一维(包括Dataframe),文本/数字->0/1
 # pandas.get_dummies(data, prefix=None, prefix_sep='_', dummy_na=False[忽略NAN])
 s1 = ['a', 'b', np.nan]
 print(pd.get_dummies(s1))

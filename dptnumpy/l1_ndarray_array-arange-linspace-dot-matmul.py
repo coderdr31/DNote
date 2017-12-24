@@ -90,3 +90,9 @@ print(a > b)
 print(a.dot(b))
 print(a.__matmul__(b)) # 矩阵乘法，和dot()效果一样
 # 还有很多__xxxx__的方法
+
+##################################################################
+## 杂
+## astype(dtype, order='K', casting='unsafe', subok=True, copy=True) 改变数据类型
+a = np.array([0, 1, 2])
+print(a.astype(float))  # [ 0.  1.  2.]

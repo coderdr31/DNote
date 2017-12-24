@@ -19,4 +19,17 @@ print(le.transform(["tokyo", "tokyo", "paris"])) # [2 2 1]
 print(list(le.inverse_transform([2, 2, 1])))
 
 ##################################################################
-## OneHotEncoder
+## OneHotEncoder 多维. np.array([0, 1, 2]).reshape(-1, 1)可变为多维
+# 无法直接处理字符串值. 文本要先转换为数字,再用 oneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+enc = OneHotEncoder()
+enc.fit([[0, 0, 3], [1, 1, 0], [0, 2, 1], [1, 0, 2]])
+print(enc.n_values_)  # array of shape (n_features,), 特征的大小位数
+print(enc.feature_indices_)  # 第几个到第几个表示某特征
+print(enc.transform([[0, 1, 1]]).toarray())
+# [[ 1.  0.  0.  1.  0.  0.  0.  0.  1.]]
+# fit 了 4 个数据 3 个特征, 而 transform 了 1 个数据 3 个特征. 第一个特征两种值(0: 10, 1: 01), 第二个特征三种值(0: 100, 1: 010, 2: 001),
+# 第三个特征四种值(0: 1000, 1: 0100, 2: 0010, 3: 0001). 所以转换[0, 1, 3]为[ 1.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  1.].
+
+# keras.utils.np_utils.to_categorical(x) one-hot一维的
+

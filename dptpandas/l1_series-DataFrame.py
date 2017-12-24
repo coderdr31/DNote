@@ -46,6 +46,7 @@ d = {'one' : pd.Series([1., 2., 3.], index=['a', 'b', 'c']),
 df = pd.DataFrame(d)
 print(df)
 # 行label和列label可分别通过访问index和columns获取
+df.index.name = "char"  # 给列的index赋值
 print(df.index, df.columns)
 print(pd.DataFrame(d, index=['d','b','a'])) # 指定index
 print(pd.DataFrame(d, index=['d', 'b', 'a'], columns=['two', 'three'])) # 指定列
