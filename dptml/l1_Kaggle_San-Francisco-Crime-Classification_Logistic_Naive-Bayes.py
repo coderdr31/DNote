@@ -115,7 +115,7 @@ predicted_test.to_csv("./tmp_dataset/Kaggle-San-Francisco-Crime-Classification/t
 # 或者
 model = BernoulliNB()
 model.fit(trainData[features], trainData['crime'])
-predicted = model.predict_proba(test_data[features])
+predicted = model.predict_proba(testData[features])
 #Write results
 result=pd.DataFrame(predicted, columns=le_crime.classes_)
 result.to_csv('./tmp_dataset/Kaggle-San-Francisco-Crime-Classification/testResult.csv', index = True, index_label = 'Id' )
