@@ -117,7 +117,7 @@ model = BernoulliNB()
 model.fit(trainData[features], trainData['crime'])
 predicted = model.predict_proba(testData[features])
 #Write results
-result=pd.DataFrame(predicted, columns=le_crime.classes_)
+result=pd.DataFrame(predicted, columns=leCrime.classes_)
 result.to_csv('./tmp_dataset/Kaggle-San-Francisco-Crime-Classification/testResult.csv', index = True, index_label = 'Id' )
 
 ##################################################################
