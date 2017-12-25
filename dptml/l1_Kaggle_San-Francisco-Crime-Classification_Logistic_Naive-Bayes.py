@@ -105,7 +105,7 @@ print("逻辑回归 log 损失为 %f" % (log_loss(validation['crime'], predicted
 ## Kaggle提交测试集
 # 以前10为例
 model = BernoulliNB()
-model.fit(train_data[features], train_data['crime'])
+model.fit(trainData[features], trainData['crime'])
 predicted_test=pd.DataFrame(model.predict_proba(testData[features][:10]), columns=list(leCrime.inverse_transform(model.classes_))) # 不加list转换也行
 # type(leCrime.inverse_transform(model.classes_))为np.ndarray,若['a']+array['b','c']->['ab','ac'];['a']+list['b','c']->['a','b','c']
 # predicted_test=pd.DataFrame(model.predict_proba(testData[features]), columns=list(leCrime.inverse_transform(model.classes_))) # 不加list转换也行
@@ -114,7 +114,7 @@ predicted_test.to_csv("./tmp_dataset/Kaggle-San-Francisco-Crime-Classification/t
 
 # 或者
 model = BernoulliNB()
-model.fit(train_data[features], train_data['crime'])
+model.fit(trainData[features], trainData['crime'])
 predicted = model.predict_proba(test_data[features])
 #Write results
 result=pd.DataFrame(predicted, columns=le_crime.classes_)
