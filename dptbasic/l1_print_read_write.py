@@ -12,17 +12,28 @@ print("the num of %s is %d" % (b, a)) # 格式化输出
 ##################################################################
 ## read()
 ##################################################################
-f1  = open('filename')
-str = f1.read()  # 整个文件都读出来了,一个字符串
-for char in str:
-    print char  # 一个一个字符输出
+# 格式
+with open('/path/to/file', 'r') as f:
+    f.xxxxxx
 
-# 以行
-f1  = open('filename')
-for line in f1:
-    print line  # 一行一行输出
-    word_arr = line.split()  # 拆出单词,默认以换行和空格拆; split('\n')
-    # strip('XXX') 去掉XXX
+f = open('./l3_xlrd_xlwt.py', 'r')
+
+for line in f:  # 最简单、最快速的逐行处理文本的方法：直接for循环文件对象
+    print (line)
+
+str = f.read()  # 一次性读取文件的全部内容放到一个字符串中(文件大于内存-不可行)
+
+for line in f.readlines():  # 一次性读取文本的所有内容，结果是一个list
+    print (line)  # 每行文本末尾都会带一个'\n'换行符 (可以使用L.rstrip('\n')去掉换行符）
+
+# 读一行
+line = f.readline()  # 速度慢
+while line:
+    print (line)
+    line = f.readline()
+
+f.close()
+
 
 # 读取二维数组
 list=[[item for item in line.strip().split()] for line in open('file').readlines()]
@@ -48,5 +59,18 @@ with open('file') as f:
 ##################################################################
 ## write()
 ##################################################################
+with open('/Users/michael/test.txt', 'w') as f:
+    f.write('')
+
 f1  = open('filename', 'w')
-f1.write('内容')
+f1.write('内容')  # 输出后不换行
+f1.close()
+
+##################################################################
+## 读写模式
+r : 只读, 不创建, 不覆盖, 指针在开始
+r+: 读写, 不创建, 不覆盖, 指针在开始
+w : 只写, 会创建, 会覆盖, 指针在开始
+w+: 读写, 会创建, 会覆盖, 指针在开始
+a : 只写, 会创建, 不覆盖, 指针在结尾
+a+: 读写, 会创建, 不覆盖, 指针在结尾
