@@ -7,3 +7,11 @@
 seq = ['one', 'two', 'three']
 for i, element in enumerate(seq):
     print i, element
+##################################################################
+## locals() 动态生成变量名
+# locals() 返回当前作用域的所有变量,所以可以用这个函数来创建变量
+for i in range(4):
+    name='v'+str(i)
+    locals()['v'+str(i)]=i
+
+print v1,v2,v3
